@@ -1,0 +1,17 @@
+[Unit]
+Description=Bilibili dynamic incremental ingest service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/space-dynamic-viewer
+EnvironmentFile=/etc/space-dynamic-viewer.env
+ExecStart=/usr/bin/node service.js
+Restart=always
+RestartSec=10
+User=space-dynamic
+Group=space-dynamic
+
+[Install]
+WantedBy=multi-user.target

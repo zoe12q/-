@@ -1,0 +1,21 @@
+{
+  "name": "space-dynamic-viewer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "一个基于 bilibili-API-collect 文档的最小示例：登录后查看指定 UID 的空间动态（含充电专属）",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "service": "node service.js",
+    "transcribe": "node transcribe.js",
+    "retry": "node retry_failed.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

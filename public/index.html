@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- 绕过 B 站 CDN 防盗链: 不发送 Referer -->
+    <meta name="referrer" content="no-referrer" />
+    <title>B 站空间动态查看器</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>空间动态查看器</h1>
+      <div class="auth">
+        <input
+          id="sessdata"
+          type="password"
+          placeholder="粘贴 SESSDATA"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button id="btn-login">验证登录</button>
+        <span id="login-state" class="login-state muted">未登录</span>
+      </div>
+    </header>
+
+    <section class="query">
+      <input
+        id="uid"
+        type="text"
+        inputmode="numeric"
+        placeholder="目标用户 UID (mid)"
+        value="1420210197"
+      />
+      <button id="btn-query">查询动态</button>
+      <label class="hint">
+        <input id="raw-toggle" type="checkbox" /> 同时显示原始 JSON
+      </label>
+    </section>
+
+    <section class="download">
+      <div class="download-row">
+        <label>起始日期 <input id="start-date" type="date" /></label>
+        <label>结束日期 <input id="end-date" type="date" /></label>
+        <button id="btn-download">一键下载</button>
+        <button id="btn-cancel" class="btn-danger" hidden>取消</button>
+        <label class="hint">
+          <input id="dl-audio" type="checkbox" />
+          下载视频音频 &amp; 字幕 (无字幕时可用 <code>WHISPER_CMD</code> 调 whisper)
+        </label>
+        <label class="hint">
+          <input id="dl-skip-images" type="checkbox" />
+          跳过图片 (勾上即"仅音频")
+        </label>
+        <span class="hint muted">
+          会按 <code>downloads/UID/YYYY-MM-DD/动态ID/</code> 结构保存文本+图片
+        </span>
+      </div>
+      <div id="dl-panel" hidden>
+        <div class="bar-wrap">
+          <div class="bar-label">
+            <span id="dl-stage">准备中...</span>
+            <span id="dl-percent" class="muted">0%</span>
+          </div>
+          <div class="bar"><div id="dl-bar-inner"></div></div>
+          <div class="bar-sub muted">
+            <span id="dl-item-prog">条目 0 / 0</span> ·
+            <span id="dl-img-prog">图片 0 / 0</span> ·
+            <span id="dl-vid-prog">视频 0 / 0</span> ·
+            <span id="dl-output"></span>
+          </div>
+        </div>
+        <pre id="dl-log" class="dl-log"></pre>
+      </div>
+    </section>
+
+    <main id="feed" class="feed"></main>
+
+    <div class="loadmore-wrap">
+      <button id="btn-more" class="loadmore" hidden>加载更多</button>
+      <span id="status" class="muted"></span>
+    </div>
+
+    <footer class="foot muted">
+      基于
+      <a
+        href="https://github.com/SocialSisterYi/bilibili-API-collect"
+        target="_blank"
+        rel="noopener"
+        >bilibili-API-collect</a
+      >
+      · 本工具仅供本地学习调试
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
