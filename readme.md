@@ -1,9 +1,5 @@
 # space-dynamic-viewer 部署教程
 
-![PushPlus 推送群二维码](pushplus-group-qrcode.jpg)
-
-不会自己搭建的人，可以扫描临时二维码直接加入共享 PushPlus 推送群(二维码不长期分享，避免影响UP主的充电人数, 现有群组可能会定期清理)。
-
 > 仅用于本地或可信服务器。不要公开部署 Web 页面，不要提交 `.env`、Cookie、SESSDATA、PushPlus token、ASR API key。
 
 ## 1. 环境要求
